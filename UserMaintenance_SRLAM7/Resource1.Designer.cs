@@ -61,7 +61,7 @@ namespace UserMaintenance_SRLAM7 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Hozzáadás.
         /// </summary>
         internal static string Add {
             get {
@@ -70,11 +70,20 @@ namespace UserMaintenance_SRLAM7 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vezetéknév.
+        ///   Looks up a localized string similar to Név.
         /// </summary>
-        internal static string LastName {
+        internal static string FullName {
             get {
-                return ResourceManager.GetString("LastName", resourceCulture);
+                return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fájlba írás.
+        /// </summary>
+        internal static string Mentes {
+            get {
+                return ResourceManager.GetString("Mentes", resourceCulture);
             }
         }
     }
