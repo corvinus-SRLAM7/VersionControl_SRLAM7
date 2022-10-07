@@ -38,7 +38,8 @@ namespace IRF_negyedik_SRLAM7_2
                 xlSheet = xlWB.ActiveSheet;
 
                 
-                CreateTable(); 
+                CreateTable();
+
 
                 
                 xlApp.Visible = true;
@@ -55,7 +56,59 @@ namespace IRF_negyedik_SRLAM7_2
                 xlWB = null;
                 xlApp = null;
             }
+
+
         }
+
+        private void CreateTable()
+        {
+            string[] headers = new string[] {
+             "Kód",
+             "Eladó",
+             "Oldal",
+             "Kerület",
+             "Lift",
+             "Szobák száma",
+             "Alapterület (m2)",
+             "Ár (mFt)",
+             "Négyzetméter ár (Ft/m2)"};
+
+            xlSheet.Cells[1, 1] = headers[0];
+
+            object[,] values = new object[Flats.Count, headers.Length];
+
+            int counter = 0;
+            foreach (Flat f in Flats)
+            {
+                values[counter, 0] = f.Code;
+                
+                values[counter, 8] = "";
+                counter++;
+            }
+
+            xlSheet.get_Range(
+             GetCell(2, 1),
+             GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+        }
+
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
+        }
+
+
         private void LoadData()
         {
             Flats = context.Flat.ToList();
