@@ -32,7 +32,7 @@ namespace SRLAM7_kilencedikgyak_2
                 
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -45,6 +45,7 @@ namespace SRLAM7_kilencedikgyak_2
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
             }
         }
+        
         private void SimStep(int year, Person person)
         {
            
@@ -133,6 +134,16 @@ namespace SRLAM7_kilencedikgyak_2
             }
 
             return deathprobabitiy;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     } 
 }
