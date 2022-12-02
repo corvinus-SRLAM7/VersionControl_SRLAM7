@@ -9,6 +9,6 @@ namespace SRLAM7_kilencedikgyak_2.Entities
     public enum Gender
     {
         Male = 1,
-        Felmale = 2
+        Female = 2
     }
 }
