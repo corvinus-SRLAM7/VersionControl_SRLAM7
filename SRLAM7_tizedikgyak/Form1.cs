@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,10 @@ namespace SRLAM7_tizedikgyak
     {
         GameController gc = new GameController();
         GameArea ga;
+        int populationSize = 100;
+        int nbrOfSteps = 10;
+        int nbrOfStepsIncrement = 10;
+        int generation = 1;
         public Form1()
         {
             InitializeComponent();
@@ -22,8 +27,20 @@ namespace SRLAM7_tizedikgyak
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
 
-            gc.AddPlayer();
-            gc.Start(true);
+            //gc.AddPlayer();
+            //gc.Start(true);
+
+
+
+            for (int i = 0; i < populationSize; i++)
+            {
+                gc.AddPlayer(nbrOfSteps);
+            }
+            gc.Start();
+
+
+
+
         }
     }
 }
